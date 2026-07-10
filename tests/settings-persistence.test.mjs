@@ -221,4 +221,12 @@ function listText(element) {
     assert.match(elements.get('dohList').children[0].children[0].children[1].textContent, /^Cyprus \(CY\)/);
 }
 
+{
+    const { context } = createHarness();
+    const profile = vm.runInNewContext('buildReliabilityProfile([], 3)', context);
+    assert.equal(profile.status, 'failed');
+    assert.match(profile.message, /current network/);
+    assert.match(profile.message, /blocking|connectivity/i);
+}
+
 console.log('Settings persistence tests passed');
