@@ -643,7 +643,7 @@ function buildReliabilityProfile(speedResults, totalQueries) {
     let status, message;
     if (successCount === 0) {
         status = 'failed';
-        message = `All queries failed. Each timeout counts as ${TIMEOUT_PENALTY_MS}ms penalty.`;
+        message = `All queries failed from your current network. This may indicate regional/IP blocking or temporary connectivity issues. Each timeout counts as ${TIMEOUT_PENALTY_MS}ms penalty.`;
     } else if (failureCount > 0) {
         status = 'partial';
         message = `${failureCount} of ${totalQueries} queries timed out. Failed runs scored as ${TIMEOUT_PENALTY_MS}ms.`;
